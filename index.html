@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR & Barcode Studio</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/JsBarcode/3.11.5/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">encode / decode</div>
+    <h1>QR &amp; barcode studio</h1>
+    <p class="sub">Turn any link or text into a code, or scan a code straight out of an image.</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="gen">Generate</button>
+    <button class="tab" data-tab="dec">Scan image</button>
+  </div>
+
+  <div class="panel active" id="panel-gen">
+    <div class="field">
+      <label for="genInput">Link or text</label>
+      <textarea id="genInput" placeholder="https://example.com or any text"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Code type</label>
+      <div class="seg">
+        <button type="button" class="on" data-type="qr">QR code</button>
+        <button type="button" data-type="barcode">Barcode</button>
+      </div>
+    </div>
+
+    <div class="field" id="barcodeFormatField" style="display:none;">
+      <label for="bcFormat">Barcode format</label>
+      <select id="bcFormat">
+        <option value="CODE128">CODE128 (any text)</option>
+        <option value="CODE39">CODE39</option>
+        <option value="EAN13">EAN-13 (13 digits)</option>
+        <option value="EAN8">EAN-8 (8 digits)</option>
+        <option value="UPC">UPC-A (12 digits)</option>
+        <option value="ITF14">ITF-14 (14 digits)</option>
+      </select>
+    </div>
+
+    <button class="btn-main" id="genBtn">Generate code</button>
+
+    <div class="stage empty" id="genStage">
+      <div class="scanline" id="scanline"></div>
+    </div>
+    <div class="out-actions" id="genActions" style="display:none;">
+      <button class="btn-ghost" id="downloadBtn" style="flex:1;">Download PNG</button>
+      <button class="btn-ghost" id="clearGenBtn">Clear</button>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-dec">
+    <div class="drop" id="dropZone">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#93a89c" stroke-width="1.6"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg>
+      <div>Drop an image here, or click to choose one</div>
+      <div style="font-size:11px; margin-top:4px; opacity:.7;">reads QR codes and common 1D barcodes</div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*">
+
+    <div id="imgPreviewWrap">
+      <img id="imgPreview" alt="Uploaded image preview">
+    </div>
+
+    <button class="btn-main" id="decodeBtn" style="margin-top:16px;" disabled>Decode image</button>
+
+    <div class="result" id="decResult">
+      <div class="result-label"><span>Decoded content</span><span class="badge" id="decFormat"></span></div>
+      <div class="result-text" id="decText"></div>
+      <div class="result-actions">
+        <button class="btn-ghost" id="copyBtn">Copy</button>
+        <a class="link-btn" id="openLinkBtn" href="#" target="_blank" rel="noopener"><button class="btn-ghost" type="button">Open link</button></a>
+      </div>
+    </div>
+    <p class="hint">Decoding runs entirely in your browser — nothing is uploaded anywhere.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
