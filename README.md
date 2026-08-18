@@ -100,7 +100,7 @@ Added screenshots of the web pages:
 5. History of recently generated and scanned codes.
 ## Author
  
-Made by Saker Munshi
+Made by Saker Munshi.
  
 ## License
  
