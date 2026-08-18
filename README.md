@@ -71,11 +71,26 @@ qr-barcode-studio/
  
 ## Screenshot
  
-Add your screenshots here:
+Added screenshots of the web pages:
  
-- Generate tab
-- Scan tab
-- Decoded result
+- Generate qr-code
+<br>
+  
+![App Screenshot](https://github.com/saker-munshi/QR-Barcode-Studio/blob/86cfe1925ccfbb6078ee87e242152673146e6d87/screenshot-generate.png)
+ <br> <br>
+ 
+- Generate bar-code
+ <br>
+ 
+![App Screenshot](https://github.com/saker-munshi/QR-Barcode-Studio/blob/86cfe1925ccfbb6078ee87e242152673146e6d87/screenshot-barcode.png)
+<br> <br>
+
+- Decoded
+<br>
+
+  
+![App Screenshot](https://github.com/saker-munshi/QR-Barcode-Studio/blob/86cfe1925ccfbb6078ee87e242152673146e6d87/screenshot-scan.png)
+  <br><br>
 ## Future Improvements
  
 1. Offline mode with bundled libraries (no CDN dependency).
